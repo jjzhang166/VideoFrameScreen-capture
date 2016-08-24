@@ -1,0 +1,15 @@
+INPUT(
+./debug\main.o
+./debug\widget.o
+./debug\qffmpeg.o
+./debug\playthread.o
+./debug\configinfo.o
+./debug\pictureutils.o
+./debug\qffmpegnotshow.o
+./debug\qthreadnotshow.o
+./debug\moc_widget.o
+./debug\moc_qffmpeg.o
+./debug\moc_playthread.o
+./debug\moc_pictureutils.o
+./debug\moc_qffmpegnotshow.o
+);

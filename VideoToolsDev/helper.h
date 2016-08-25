@@ -10,6 +10,7 @@
 #include <QtSql>
 #include <QDebug>
 #include <QFile>
+#include <qmessagebox.h>
 
 /* 说明：全局辅助操作类实现文件
  * 功能：判断文件是否存在、创建指定目录
@@ -20,18 +21,6 @@
 class Helper : public QObject
 {
 public:
-    //autorun when computer start
-    static void autoRunWithSystem(bool isAutoRun, QString AppName, QString AppPath) {
-            QSettings *reg = new QSettings(
-                "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
-                QSettings::NativeFormat);
-
-            if (isAutoRun) {
-                reg->setValue(AppName, AppPath);
-            } else {
-                reg->setValue(AppName, "");
-            }
-     }
 
     //设置编码为UTF8
        static void setUTF8Code() {
@@ -69,12 +58,29 @@ public:
 
        //文件是否存在
        static bool fileIsExist(QString strFile) {
-           //qDebug() << strFile;
            QFile tempFile(strFile);
-           //QFile test("1.txt");
-
-           //qDebug()<<test.exists();
            return tempFile.exists();
+       }
+
+       //遍历当前目录下所有文件夹并获得文件目录
+       static void getfilePath(const QString &path, QList<QString> &pathList){
+           QDir dir(path);
+           QStringList list;
+           QStringList::Iterator iter;
+           list = dir.entryList(QDir::Dirs, QDir::Name);
+
+           for(iter=list.begin(); iter!=list.end(); ++iter){
+               if( "." == *iter ||".." == *iter )continue;
+                   getfilePath( path+"\\"+*iter , pathList);
+           }
+
+           list = dir.entryList(QDir::Files, QDir::Name);
+           QString subPath;
+           for(iter=list.begin(); iter!=list.end(); ++iter){
+               subPath = path + "\\" + *iter;
+               pathList.push_back(subPath);
+           }
+
        }
 
 };

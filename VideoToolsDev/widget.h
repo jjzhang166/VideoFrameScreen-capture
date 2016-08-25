@@ -26,6 +26,7 @@ public:
 
     void setVideoAlreadySave();
     void pauseMs(int pauseTime);
+    QString getCurrentVideoName();
 public slots:
         void showVideoName();
         void playAndSaveVideo();

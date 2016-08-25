@@ -20,6 +20,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QWidget>
 
@@ -48,6 +49,9 @@ public:
     QLabel *label_3;
     QPushButton *pushButtonDingWeiStart;
     QPushButton *pushButtonDingWeiEnd;
+    QRadioButton *radioButton;
+    QRadioButton *radioButton_2;
+    QRadioButton *radioButton_3;
 
     void setupUi(QWidget *Widget)
     {
@@ -126,6 +130,15 @@ public:
         pushButtonDingWeiEnd = new QPushButton(Widget);
         pushButtonDingWeiEnd->setObjectName(QStringLiteral("pushButtonDingWeiEnd"));
         pushButtonDingWeiEnd->setGeometry(QRect(860, 790, 75, 23));
+        radioButton = new QRadioButton(Widget);
+        radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setGeometry(QRect(1010, 800, 89, 16));
+        radioButton_2 = new QRadioButton(Widget);
+        radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
+        radioButton_2->setGeometry(QRect(1120, 800, 89, 16));
+        radioButton_3 = new QRadioButton(Widget);
+        radioButton_3->setObjectName(QStringLiteral("radioButton_3"));
+        radioButton_3->setGeometry(QRect(1240, 800, 89, 16));
 
         retranslateUi(Widget);
 
@@ -141,8 +154,8 @@ public:
         pushButton1->setText(QApplication::translate("Widget", "\350\277\231\346\230\257\346\222\255\346\224\276\346\232\202\345\201\234\346\214\211\351\222\256\357\274\201\344\270\215\350\246\201\351\227\256\346\210\221\344\270\272\344\273\200\344\271\210\344\274\232\345\234\250\350\277\231\351\207\214\357\274\201", 0));
         pushButtonOpen->setText(QApplication::translate("Widget", "\346\211\223\345\274\200\350\247\206\351\242\221\350\267\257\345\276\204", 0));
         pushButtonSave->setText(QApplication::translate("Widget", "\350\256\276\347\275\256\350\247\206\351\242\221\344\277\235\345\255\230\350\267\257\345\276\204\346\240\271\347\233\256\345\275\225", 0));
-        lineEditOpen->setText(QApplication::translate("Widget", "D:\\", 0));
-        lineEditSave->setText(QApplication::translate("Widget", "D:\\\350\247\206\351\242\221", 0));
+        lineEditOpen->setText(QApplication::translate("Widget", "D:\\\350\247\206\351\242\221", 0));
+        lineEditSave->setText(QApplication::translate("Widget", "D:\\\350\247\206\351\242\221\344\277\235\345\255\230", 0));
         pushButtonAdd->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\350\247\206\351\242\221\346\256\265", 0));
         lineEditBegin->setText(QApplication::translate("Widget", "442", 0));
         lineEditEnd->setText(QApplication::translate("Widget", "538", 0));
@@ -151,6 +164,9 @@ public:
         label_3->setText(QApplication::translate("Widget", "\345\215\203\345\210\206\346\257\224", 0));
         pushButtonDingWeiStart->setText(QApplication::translate("Widget", "\345\256\232\344\275\215", 0));
         pushButtonDingWeiEnd->setText(QApplication::translate("Widget", "\345\256\232\344\275\215", 0));
+        radioButton->setText(QApplication::translate("Widget", "RadioButton", 0));
+        radioButton_2->setText(QApplication::translate("Widget", "RadioButton", 0));
+        radioButton_3->setText(QApplication::translate("Widget", "RadioButton", 0));
     } // retranslateUi
 
 };

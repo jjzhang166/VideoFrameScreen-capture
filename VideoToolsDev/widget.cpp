@@ -3,6 +3,7 @@
 #include "playthread.h"
 #include "qffmpegnotshow.h"
 #include "qthreadnotshow.h"
+#include "helper.h"
 
 #include <QMessageBox>
 #include <QTimer>
@@ -61,7 +62,10 @@ void Widget::on_pushButton_clicked()
         QFFmpeg *temp = f; //用来保存ffmpeg原来指向的空间并在代码块最后释放
         QFFmpeg *temp2 = new QFFmpeg(this);
 
-        temp2->SetUrl(ui->lineEdit->text());
+        QString currentDir = ui->listWidget->currentItem()->text();
+
+        temp2->SetUrl(currentDir);
+        ui->lineEdit->setText(currentDir);
         qDebug() << ui->lineEdit->text();
         if(temp2->Init()){
             f = temp2;
@@ -105,7 +109,7 @@ void Widget::showVideoName()
         QString openPath = ui->lineEditOpen->text();
         ui->lineEdit->setText(openPath);
         qDebug() << openPath;
-        QDir *dir=new QDir(openPath);
+        /*QDir *dir=new QDir(openPath);
         if(dir->exists())
         {
             QStringList filter;
@@ -127,7 +131,22 @@ void Widget::showVideoName()
         {
             QMessageBox::warning(this,"","文件夹不存在",QMessageBox::Ok);
         }
-        delete dir;
+        delete dir;*/
+        QDir dir(openPath);
+        if(dir.exists()){
+            ui->listWidget->clear();
+            QList<QString> pathList;
+            Helper::getfilePath(openPath ,pathList );
+            if(pathList.size() == 0){
+                QMessageBox::warning(this,"","文件不存在",QMessageBox::Ok);
+            }else{
+                for(int i =0; i < pathList.size() ; ++i)
+                     ui->listWidget->addItem(pathList[i]);
+            }
+
+        }else{
+           QMessageBox::warning(this,"","文件夹不存在",QMessageBox::Ok);
+        }
     }
 
 }
@@ -151,9 +170,8 @@ void Widget::playAndSaveVideo()
         if ( selectedItem )
         {
             //得到视频名称,取消后缀，加入根目录路径中
-            ui->lineEdit->setText(ui->lineEditOpen->text() + "\\" + selectedItem->text());
-            QStringList list = selectedItem->text().split('.');
-            QString videoName = list.at(0);//取消后缀
+            ui->lineEdit->setText(ui->listWidget->currentItem()->text());
+            QString videoName = getCurrentVideoName();//取消后缀
             saveSXKPath    = savePathRoot + "上下客样本"+"\\" + videoName + "\\" + videoName;
             saveFSXKLPath  = savePathRoot + "非上下客样本左"+"\\" + videoName + "\\" + videoName;
             saveFSXKRPath  = savePathRoot + "非上下客样本右"+"\\" + videoName + "\\" + videoName;
@@ -352,15 +370,16 @@ void Widget::savePicture(qint64 startTime,qint64 endTime,int type)
 void Widget::setVideoAlreadySave()
 {
     QString oldName = ui->listWidget->currentItem()->text();
-    QString newName = "(alreadySave)"+oldName;
+    QString newName = "(alreadySave)"+oldName + "\n";
 
     QString fileName = savePathRoot + "视频信息.txt";
     QFile file(fileName);
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Text ))
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     {
         qDebug() << file.errorString();
     }
     file.write(newName.toLatin1());
+//    file.write("\n");
     file.close();
 }
 
@@ -411,4 +430,14 @@ void Widget::pauseMs(int pauseTime)
     {
         time1 = QTime::currentTime().msecsSinceStartOfDay();
     }
+}
+
+QString Widget::getCurrentVideoName()
+{
+    QString dirVideoName = ui->listWidget->currentItem()->text();
+    QStringList list = dirVideoName.split('\\');
+    QString videoNameWithPostFix = list.at(list.length()-1);
+
+    list = videoNameWithPostFix.split('.');
+    return list.at(0);
 }

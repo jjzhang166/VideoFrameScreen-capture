@@ -58,11 +58,12 @@ void QFFmpegNotShow::playLocal()
         int time1 = QTime::currentTime().msecsSinceStartOfDay();
         qDebug()<< "保存图片花费了这么多毫秒："<<time1-time0
                 << "  当前时间是us： "<< currentTime
-                << "  保存图片张数： "<<pictureCount;
-
+                << "  保存图片张数： "<< pictureCount
+                << "  结束时间是us：" << endTime;
         av_free_packet(&pAVPacket);//释放资源,否则内存会一直上升.
+        qDebug() << "保存路径为： "<< p.getSavePath();
         pictureCount ++;
-        if(currentTime>endTime)
+        if(currentTime>endTime || pictureCount > 10000)
         {//播放结束
             break;
         }

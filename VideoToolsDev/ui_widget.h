@@ -46,6 +46,8 @@ public:
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
+    QPushButton *pushButtonDingWeiStart;
+    QPushButton *pushButtonDingWeiEnd;
 
     void setupUi(QWidget *Widget)
     {
@@ -108,16 +110,22 @@ public:
         lineEditBegin->setGeometry(QRect(440, 790, 111, 31));
         lineEditEnd = new QLineEdit(Widget);
         lineEditEnd->setObjectName(QStringLiteral("lineEditEnd"));
-        lineEditEnd->setGeometry(QRect(620, 790, 121, 31));
+        lineEditEnd->setGeometry(QRect(730, 790, 121, 31));
         label = new QLabel(Widget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(400, 800, 54, 12));
         label_2 = new QLabel(Widget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(600, 800, 54, 12));
+        label_2->setGeometry(QRect(710, 800, 54, 12));
         label_3 = new QLabel(Widget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(100, 780, 51, 20));
+        pushButtonDingWeiStart = new QPushButton(Widget);
+        pushButtonDingWeiStart->setObjectName(QStringLiteral("pushButtonDingWeiStart"));
+        pushButtonDingWeiStart->setGeometry(QRect(570, 790, 75, 23));
+        pushButtonDingWeiEnd = new QPushButton(Widget);
+        pushButtonDingWeiEnd->setObjectName(QStringLiteral("pushButtonDingWeiEnd"));
+        pushButtonDingWeiEnd->setGeometry(QRect(860, 790, 75, 23));
 
         retranslateUi(Widget);
 
@@ -133,12 +141,16 @@ public:
         pushButton1->setText(QApplication::translate("Widget", "\350\277\231\346\230\257\346\222\255\346\224\276\346\232\202\345\201\234\346\214\211\351\222\256\357\274\201\344\270\215\350\246\201\351\227\256\346\210\221\344\270\272\344\273\200\344\271\210\344\274\232\345\234\250\350\277\231\351\207\214\357\274\201", 0));
         pushButtonOpen->setText(QApplication::translate("Widget", "\346\211\223\345\274\200\350\247\206\351\242\221\350\267\257\345\276\204", 0));
         pushButtonSave->setText(QApplication::translate("Widget", "\350\256\276\347\275\256\350\247\206\351\242\221\344\277\235\345\255\230\350\267\257\345\276\204\346\240\271\347\233\256\345\275\225", 0));
-        lineEditOpen->setText(QApplication::translate("Widget", "D:\\\350\247\206\351\242\221", 0));
-        lineEditSave->setText(QString());
+        lineEditOpen->setText(QApplication::translate("Widget", "D:\\", 0));
+        lineEditSave->setText(QApplication::translate("Widget", "D:\\\350\247\206\351\242\221", 0));
         pushButtonAdd->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\350\247\206\351\242\221\346\256\265", 0));
+        lineEditBegin->setText(QApplication::translate("Widget", "442", 0));
+        lineEditEnd->setText(QApplication::translate("Widget", "538", 0));
         label->setText(QApplication::translate("Widget", "Begin:", 0));
         label_2->setText(QApplication::translate("Widget", "End:", 0));
         label_3->setText(QApplication::translate("Widget", "\345\215\203\345\210\206\346\257\224", 0));
+        pushButtonDingWeiStart->setText(QApplication::translate("Widget", "\345\256\232\344\275\215", 0));
+        pushButtonDingWeiEnd->setText(QApplication::translate("Widget", "\345\256\232\344\275\215", 0));
     } // retranslateUi
 
 };

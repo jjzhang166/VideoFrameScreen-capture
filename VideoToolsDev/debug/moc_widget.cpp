@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[16];
-    char stringdata0[184];
+    QByteArrayData data[18];
+    char stringdata0[216];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,15 +42,18 @@ QT_MOC_LITERAL(9, 104, 5), // "value"
 QT_MOC_LITERAL(10, 110, 14), // "slotUpdateTime"
 QT_MOC_LITERAL(11, 125, 4), // "time"
 QT_MOC_LITERAL(12, 130, 16), // "saveVideoPicture"
-QT_MOC_LITERAL(13, 147, 8), // "setImage"
-QT_MOC_LITERAL(14, 156, 5), // "image"
-QT_MOC_LITERAL(15, 162, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(13, 147, 16), // "seekAndStopStart"
+QT_MOC_LITERAL(14, 164, 14), // "seekAndStopEnd"
+QT_MOC_LITERAL(15, 179, 8), // "setImage"
+QT_MOC_LITERAL(16, 188, 5), // "image"
+QT_MOC_LITERAL(17, 194, 21) // "on_pushButton_clicked"
 
     },
     "Widget\0sendSavePath\0\0savePath\0"
     "showVideoName\0playAndSaveVideo\0"
     "getSavePathRoot\0playPause\0slotValueChanged\0"
     "value\0slotUpdateTime\0time\0saveVideoPicture\0"
+    "seekAndStopStart\0seekAndStopEnd\0"
     "setImage\0image\0on_pushButton_clicked"
 };
 #undef QT_MOC_LITERAL
@@ -61,7 +64,7 @@ static const uint qt_meta_data_Widget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -69,18 +72,20 @@ static const uint qt_meta_data_Widget[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   64,    2, 0x06 /* Public */,
+       1,    1,   74,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   67,    2, 0x0a /* Public */,
-       5,    0,   68,    2, 0x0a /* Public */,
-       6,    0,   69,    2, 0x0a /* Public */,
-       7,    0,   70,    2, 0x0a /* Public */,
-       8,    1,   71,    2, 0x0a /* Public */,
-      10,    1,   74,    2, 0x0a /* Public */,
-      12,    0,   77,    2, 0x0a /* Public */,
-      13,    1,   78,    2, 0x08 /* Private */,
-      15,    0,   81,    2, 0x08 /* Private */,
+       4,    0,   77,    2, 0x0a /* Public */,
+       5,    0,   78,    2, 0x0a /* Public */,
+       6,    0,   79,    2, 0x0a /* Public */,
+       7,    0,   80,    2, 0x0a /* Public */,
+       8,    1,   81,    2, 0x0a /* Public */,
+      10,    1,   84,    2, 0x0a /* Public */,
+      12,    0,   87,    2, 0x0a /* Public */,
+      13,    0,   88,    2, 0x0a /* Public */,
+      14,    0,   89,    2, 0x0a /* Public */,
+      15,    1,   90,    2, 0x08 /* Private */,
+      17,    0,   93,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -93,7 +98,9 @@ static const uint qt_meta_data_Widget[] = {
     QMetaType::Void, QMetaType::Int,    9,
     QMetaType::Void, QMetaType::LongLong,   11,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QImage,   14,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QImage,   16,
     QMetaType::Void,
 
        0        // eod
@@ -113,8 +120,10 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 5: _t->slotValueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 6: _t->slotUpdateTime((*reinterpret_cast< qint64(*)>(_a[1]))); break;
         case 7: _t->saveVideoPicture(); break;
-        case 8: _t->setImage((*reinterpret_cast< const QImage(*)>(_a[1]))); break;
-        case 9: _t->on_pushButton_clicked(); break;
+        case 8: _t->seekAndStopStart(); break;
+        case 9: _t->seekAndStopEnd(); break;
+        case 10: _t->setImage((*reinterpret_cast< const QImage(*)>(_a[1]))); break;
+        case 11: _t->on_pushButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -155,13 +164,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 12;
     }
     return _id;
 }

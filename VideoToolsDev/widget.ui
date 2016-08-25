@@ -128,7 +128,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>D:\视频</string>
+    <string>D:\</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEditSave">
@@ -141,7 +141,7 @@
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>D:\视频</string>
    </property>
   </widget>
   <widget class="QSlider" name="horizontalSlider">
@@ -189,15 +189,21 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="text">
+    <string>442</string>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEditEnd">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>730</x>
      <y>790</y>
      <width>121</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>538</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -216,7 +222,7 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>600</x>
+     <x>710</x>
      <y>800</y>
      <width>54</width>
      <height>12</height>
@@ -237,6 +243,32 @@
    </property>
    <property name="text">
     <string>千分比</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonDingWeiStart">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>790</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>定位</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonDingWeiEnd">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>790</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>定位</string>
    </property>
   </widget>
  </widget>

@@ -73,6 +73,7 @@ void Widget::on_pushButton_clicked()
             connect(f,SIGNAL(GetImage(QImage)),this,SLOT(setImage(QImage)));
             connect(this,SIGNAL(sendSavePath(QString)),f,SLOT(getSavePath(QString)));
             connect(f,SIGNAL(updateTime(qint64)),this,SLOT(slotUpdateTime(qint64)));
+
             emit sendSavePath(saveSXKPath);
 
             thread->setffmpeg(f);

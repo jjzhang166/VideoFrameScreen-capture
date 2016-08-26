@@ -16,10 +16,11 @@ signals:
 
 public slots:
      void playLocal();
-
+     void setSaveType(int type){saveType = type;}
 private:
      qint64 startTime;
      qint64 endTime;
+     int saveType;
 };
 
 #endif // QFFMPEGNOTSHOW_H

@@ -27,15 +27,14 @@ Widget::Widget(QWidget *parent) :
 
     ui->horizontalSlider->setRange(0,1000);
 
-    connect(ui->pushButtonOpen,SIGNAL(clicked(bool)),this,SLOT(showVideoName()));
-    connect(ui->pushButtonSavePath,SIGNAL(clicked(bool)),this,SLOT(getSavePathRoot()));
-    connect(ui->pushButtonSavePicture,SIGNAL(clicked(bool)),this,SLOT(saveVideoPicture()));
-    connect(ui->pushButtonDingWeiStart,SIGNAL(clicked(bool)),this,SLOT(seekAndStopStart()));
-    connect(ui->pushButtonDingWeiEnd,SIGNAL(clicked(bool)),this,SLOT(seekAndStopEnd()));
+    connect(ui->pushButtonOpen,SIGNAL(clicked(bool)),this,SLOT(slotShowVideoName()));
+    connect(ui->pushButtonSavePicture,SIGNAL(clicked(bool)),this,SLOT(slotSaveVideoPicture()));
+    connect(ui->pushButtonDingWeiStart,SIGNAL(clicked(bool)),this,SLOT(slotSeekAndStopStart()));
+    connect(ui->pushButtonDingWeiEnd,SIGNAL(clicked(bool)),this,SLOT(slotSeekAndStopEnd()));
 
 
-    connect(ui->listWidget,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(playAndSaveVideo()));
-    connect(ui->pushButtonPlay,SIGNAL(clicked(bool)),this,SLOT(playPause()));
+    connect(ui->listWidget,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(slotPlayAndSaveVideo()));
+    connect(ui->pushButtonPlay,SIGNAL(clicked(bool)),this,SLOT(slotPlayPause()));
     connect(ui->horizontalSlider,SIGNAL(sliderMoved(int)),this,SLOT(slotValueChanged(int)));
 }
 
@@ -44,19 +43,17 @@ Widget::~Widget()
     delete ui;
 }
 
-void Widget::setImage( const QImage &image)
+void Widget::slotSetImage( const QImage &image)
 {
     ui->labelVideo->setPixmap(QPixmap::fromImage(image));
 }
 
 void Widget::slotPlayVideo()
 {
-    if (ui->lineEdit->text() == 0)
-    {
+    if (ui->lineEdit->text() == 0){
         QMessageBox::warning(this,"Warning","Please input address",QMessageBox::Ok);
     }
-    else
-    {
+    else{
         resetQFFmpeg();
         QFFmpeg *temp = f; //用来保存ffmpeg原来指向的空间并在代码块最后释放
         QFFmpeg *temp2 = new QFFmpeg(this);
@@ -69,7 +66,7 @@ void Widget::slotPlayVideo()
         if(temp2->Init()){
             f = temp2;
 
-            connect(f,SIGNAL(GetImage(QImage)),this,SLOT(setImage(QImage)));
+            connect(f,SIGNAL(GetImage(QImage)),this,SLOT(slotSetImage(QImage)));
             connect(this,SIGNAL(sendSavePath(QString)),f,SLOT(getSavePath(QString)));
             connect(f,SIGNAL(updateTime(qint64)),this,SLOT(slotUpdateTime(qint64)));
             emit sendSavePath(saveSXKPath);
@@ -79,8 +76,7 @@ void Widget::slotPlayVideo()
 
             thread->start();
         }
-        else
-        {
+        else{
             f = temp2;//此时失败后ffmpeg便没有运行play方法
             QMessageBox::warning(this,"Warning","ffmpeg init failed",QMessageBox::Ok);
             ui->labelVideo->clear();
@@ -88,89 +84,86 @@ void Widget::slotPlayVideo()
         delete temp;
         temp = Q_NULLPTR;
     }
-
 }
 
 /*
  * 点击打开文件后发生的事件
  * 通过输入的路径将文件夹下面的所有video视频在listWidget中显示出来
- *
+ * 1 输入为空 退出
+ * 2 路径不存在 退出
+ * 3 文件不存在 退出
  * */
-void Widget::showVideoName()
+void Widget::slotShowVideoName()
 {
 
-    if(ui->lineEditOpen->text().isEmpty())
-    {
+    if(ui->lineEditOpen->text().isEmpty()){
         QMessageBox::warning(this,"","输入不能为空",QMessageBox::Ok);
-    }
-    else
-    {
-        QString openPath = ui->lineEditOpen->text();
-        ui->lineEdit->setText(openPath);
-        qDebug() << openPath;
-
-        QDir dir(openPath);
-        if(dir.exists()){
-            ui->listWidget->clear();
-            QList<QString> pathList;
-            Helper::getfilePath(openPath ,pathList );
-            if(pathList.size() == 0){
-                QMessageBox::warning(this,"","文件不存在",QMessageBox::Ok);
-            }else{
-                for(int i =0; i < pathList.size() ; ++i)
-                     ui->listWidget->addItem(pathList[i]);
-            }
-
-        }else{
-           QMessageBox::warning(this,"","文件夹不存在",QMessageBox::Ok);
-        }
+        return;
     }
 
+    QString openPath = ui->lineEditOpen->text();
+    ui->lineEdit->setText(openPath);
+    qDebug() << openPath;
+
+    QDir dir(openPath);
+    if(!dir.exists()){
+       QMessageBox::warning(this,"","文件夹不存在",QMessageBox::Ok);
+       return;
+    }
+
+    ui->listWidget->clear();
+    QList<QString> pathList;
+    Helper::getfilePath(openPath ,pathList );
+    if(pathList.size() == 0){
+        QMessageBox::warning(this,"","文件不存在",QMessageBox::Ok);
+        return;
+    }
+    for(int i =0; i < pathList.size() ; ++i)
+         ui->listWidget->addItem(pathList[i]);
 }
 
 /*
  * 双击列表里的视频后会发生的事件
+ * 1 保存路径不能为空 否则退出
+ * 2 双击视频列表 若没有选中 退出
  * */
-void Widget::playAndSaveVideo()
+void Widget::slotPlayAndSaveVideo()
 {
     ui->lineEdit->clear();
-    if(ui->lineEditSave->text().isEmpty())
-    {
-        QMessageBox::about(this,"","保存路径不能为空！");
-    }
-    else
-    {
-        qDebug() << "成功双击了列表里的视频";
-        QListWidgetItem *selectedItem = ui->listWidget->itemAt(
-                    ui->listWidget->mapFromGlobal(QCursor::pos()));
 
-        if ( selectedItem )
-        {
-            //得到视频名称,取消后缀，加入根目录路径中
-            ui->lineEdit->setText(ui->listWidget->currentItem()->text());
-            QString videoName = Helper::getVideoNameFromDir(ui->listWidget->currentItem()->text());//取消后缀
-            saveSXKPath    = savePathRoot + "上下客样本"+"\\" + videoName + "\\" + videoName;
-            saveFSXKLPath  = savePathRoot + "非上下客样本左"+"\\" + videoName + "\\" + videoName;
-            saveFSXKRPath  = savePathRoot + "非上下客样本右"+"\\" + videoName + "\\" + videoName;
-            saveGDSXKLPath = savePathRoot + "过度上下客样本左" +"\\" + videoName + "\\" + videoName;
-            saveGDSXKRPath = savePathRoot + "过度上下客样本右" +"\\" + videoName + "\\" + videoName;
-            this->slotPlayVideo();
-        }
+    qDebug() << "成功双击了列表里的视频";
+    if(!slotGetSavePathRoot()){
+        return;
     }
+
+    QListWidgetItem *selectedItem = ui->listWidget->itemAt(
+                ui->listWidget->mapFromGlobal(QCursor::pos()));
+    if ( !selectedItem ){
+        return;
+    }
+    //得到视频名称,取消后缀，加入根目录路径中
+    ui->lineEdit->setText(ui->listWidget->currentItem()->text());
+    QString videoName = Helper::getVideoNameFromDir(ui->listWidget->currentItem()->text());//取消后缀
+    //暂时标记为1 箭头对
+    saveSXKPath    = savePathRoot + "上下客样本"+"\\" + videoName + "\\" + "1";
+    saveFSXKLPath  = savePathRoot + "非上下客样本左"+"\\" + videoName + "\\" + "1";
+    saveFSXKRPath  = savePathRoot + "非上下客样本右"+"\\" + videoName + "\\" + "1";
+    saveGDSXKLPath = savePathRoot + "过度上下客样本左" +"\\" + videoName + "\\" + "1";
+    saveGDSXKRPath = savePathRoot + "过度上下客样本右" +"\\" + videoName + "\\" + "1";
+    this->slotPlayVideo();
+
 }
 
-void Widget::getSavePathRoot()
+bool Widget::slotGetSavePathRoot()
 {
-    if(ui->lineEditSave->text().isEmpty())
-    {
-        QMessageBox::warning(this,"","输入不能为空",QMessageBox::Ok);
+    if(ui->lineEditSave->text().isEmpty()){
+        QMessageBox::warning(this,"","保存路径不能为空",QMessageBox::Ok);
+        return false;
     }
-    else
-    {
+    else{
         savePathRoot = ui->lineEditSave->text();
         savePathRoot += "\\";
-        QString show = "设置保存路径成功，保存路径为：";
-        QMessageBox::warning(this,"",show,QMessageBox::Ok);
+        return true;
     }
 }
 
@@ -180,8 +173,7 @@ void Widget::resetQFFmpeg()
     thread->getFFmpeg()->setPlaying(false);
     thread->setFlag(false);
     int count = 0;
-    while(thread->isRunning())
-    {
+    while(thread->isRunning()){
         qDebug() << "又要等子线程停下来才能设置过新的线程" << count++;
     }
 }
@@ -196,20 +188,17 @@ void Widget::keyPressEvent(QKeyEvent *event)
  * 点击暂停按钮发生的事件
  * */
 
-void Widget::playPause()
+void Widget::slotPlayPause()
 {
-    if(thread->getFFmpeg()->getState() == QFFmpeg::PlayingState)
-    {
+    if(thread->getFFmpeg()->getState() == QFFmpeg::PlayingState){
         qDebug() <<"now the state is PlayingState";
         thread->getFFmpeg()->setPause(true);
     }
-    else if (thread->getFFmpeg()->getState() == QFFmpeg::PausedState)
-    {
+    else if (thread->getFFmpeg()->getState() == QFFmpeg::PausedState){
         qDebug() <<"now the state is PauseState";
         thread->getFFmpeg()->setPause(false);
     }
-    else if (thread->getFFmpeg()->getState() == QFFmpeg::StoppedState)
-    {
+    else if (thread->getFFmpeg()->getState() == QFFmpeg::StoppedState){
         qDebug() <<"now the state is StoppedState";
     }
 }
@@ -217,7 +206,6 @@ void Widget::playPause()
 void Widget::slotUpdateTime(qint64 time)
 {
     double v = time*10000.0/(thread->getFFmpeg()->getTotalTime()*10.0);
-//    qDebug() << "给slider设置的value：" << v;
     ui->horizontalSlider->setValue(v);
     //ui->lineEditProcess->setText(QString("%1").arg(v));
     long minVal = time/(60*(1e+6));
@@ -240,37 +228,37 @@ void Widget::slotValueChanged(int value)
  * 点击add按钮发生的事情
  * */
 
-void Widget::saveVideoPicture()
+void Widget::slotSaveVideoPicture()
 {
     //得到截取视频的起始时间和终止时间的long值
     //将输入的时间格式转换为微秒，by zjy
 
     qint64 totalTime = thread->getFFmpeg()->getTotalTime()*96/100;
+    if(ui->lineEditBegin->text().isEmpty() && ui->lineEditEnd->text().isEmpty() ){//同时为空
+        qint64 GDLstartTime = 1;
+        savePicture(GDLstartTime ,totalTime,3 );
+        return ;
+    }
+
     if (!Helper::isInputTimeFormatRight(ui->lineEditBegin->text()
-            ,ui->lineEditEnd->text(),totalTime) )
-    {
+            ,ui->lineEditEnd->text(),totalTime) ){
         QMessageBox::warning(this,"","开始时间或结束时间输入有误！",QMessageBox::Ok);
         return;
     }
 
-    if(ui->lineEditBegin->text().isEmpty() || ui->lineEditEnd->text().isEmpty() )
-    {
+    if(ui->lineEditBegin->text().isEmpty() || ui->lineEditEnd->text().isEmpty() ){
         QMessageBox::warning(this,"","开始位置或结束位置不能为空",QMessageBox::Ok);
     }
-    else
-    {
+    else{
         //截取上下客视频
         qint64 SXKstartTime = Helper::getTimeFromLineEdit(ui->lineEditBegin->text());
         qint64 SXKendTime = Helper::getTimeFromLineEdit(ui->lineEditEnd->text());
         savePicture(SXKstartTime,SXKendTime,0);
 
-
         //得到过度上下客左侧的起始时间和终止时间的long值
         qint64 GDLstartTime = SXKstartTime - ui->lineEditSetGDTime->text().toDouble()*1000000;
         qint64 GDLendTime = SXKstartTime;
-        if ( GDLstartTime > 0 )
-        {
-//            qDebug() << "***************GDLstartTime" << GDLstartTime;
+        if ( GDLstartTime > 0 ){
             savePicture(GDLstartTime,GDLendTime,1);
 
              //得到非上下客左侧的起始时间和终止时间的long值
@@ -278,17 +266,14 @@ void Widget::saveVideoPicture()
             qint64 FLendTime = GDLstartTime;
             savePicture(FLstartTime,FLendTime,3);
         }
-        else // 如果过度上下客的开始时间小于0，就从1秒处开始截取
-        {
+        else {// 如果过度上下客的开始时间小于0，就从1秒处开始截取
             savePicture(1000000,GDLendTime,1);
         }
 
         //得到过度上下客右侧的起始时间和终止时间的long值
         qint64 GDRstartTime = SXKendTime;
         qint64 GDRendTime = SXKendTime + ui->lineEditSetGDTime->text().toDouble()*1000000;
-        if ( GDRendTime < totalTime )
-        {
-//            qDebug() << "***************GDRendTime" << GDRendTime;
+        if ( GDRendTime < totalTime ){
             savePicture(GDRstartTime,GDRendTime,2);
 
             //得到非上下客右侧的起始时间和终止时间的long值
@@ -296,16 +281,13 @@ void Widget::saveVideoPicture()
             qint64 FRendTime = totalTime;
             savePicture(FRstartTime,FRendTime,4);
         }
-        else// 如果过度上下客右侧的终止时间大于总时间，那么总时间就是终止时间
-        {
+        else{// 如果过度上下客右侧的终止时间大于总时间，那么总时间就是终止时间
             savePicture(GDRstartTime,totalTime,2);
         }
-
         setVideoAlreadySave();//设置已保存
     }
-    ui->lineEditBegin->clear();
-    ui->lineEditEnd->clear();
 }
+
 
 /*
  *  保存上下客图片 type=0是上下客 1是过度上下客left 2是过度上下客right 3 非上下客left 4非上下客right
@@ -323,8 +305,7 @@ void Widget::savePicture(qint64 startTime,qint64 endTime,int type)
     t->setFFmpeg(ffmpegNotShow);
 
     //读取radioButton的选中状态 只有上下客样本才要区分左右，其余默认左右
-    if(type == 0)
-    {
+    if(type == 0){
         if(ui->radioLR->isChecked()){
              ffmpegNotShow->setSaveType(1);
         }else if(ui->radioLeft->isChecked()){
@@ -333,46 +314,38 @@ void Widget::savePicture(qint64 startTime,qint64 endTime,int type)
              ffmpegNotShow->setSaveType(3);
         }
     }
-    else
-    {
+    else{
         ffmpegNotShow->setSaveType(1);
     }
 
 
     ffmpegNotShow->SetUrl(ui->lineEdit->text());
     if(ffmpegNotShow->Init()){
-
         connect(this,SIGNAL(sendSavePath(QString)),ffmpegNotShow,SLOT(getSavePath(QString)));
-        if (type == 0)
-        {
+        if (type == 0){
             emit sendSavePath(saveSXKPath);
             qDebug() << "保存上下客视频" << saveSXKPath;
         }
-        else if (type == 1 )
-        {
+        else if (type == 1 ){
             emit sendSavePath(saveGDSXKLPath);
             qDebug() << "保存上下客视频" << saveGDSXKLPath;
         }
-        else if (type == 2 )
-        {
+        else if (type == 2 ){
             emit sendSavePath(saveGDSXKRPath);
             qDebug() << "保存上下客视频" << saveGDSXKRPath;
         }
-        else if (type == 3 )
-        {
+        else if (type == 3 ){
             emit sendSavePath(saveFSXKLPath);
             qDebug() << "保存上下客视频" << saveFSXKLPath;
         }
-        else if (type == 4 )
-        {
+        else if (type == 4 ){
             emit sendSavePath(saveFSXKRPath);
             qDebug() << "保存上下客视频" << saveFSXKRPath;
         }
 
         t->start();
     }
-    else
-    {
+    else{
         QMessageBox::warning(this,"Warning","ffmpeg init failed",QMessageBox::Ok);
         ui->labelVideo->clear();
     }
@@ -381,7 +354,20 @@ void Widget::savePicture(qint64 startTime,qint64 endTime,int type)
 void Widget::setVideoAlreadySave()
 {
     QString oldName = ui->listWidget->currentItem()->text();
-    QString newName = "(alreadySave)"+oldName + "\n";
+    QString whichSide;
+
+    QString startTime = ui->lineEditBegin->text();
+    QString endTime = ui->lineEditEnd->text();
+
+    if(ui->radioLR->isChecked()){
+         whichSide = "Left and Right ";
+    }else if(ui->radioLeft->isChecked()){
+         whichSide = "Left           ";
+    }else{
+         whichSide = "Right          ";
+    }
+
+    QString newName = startTime + "到" + endTime + "  " + whichSide + oldName + "\n";
 
     QString fileName = savePathRoot + "视频信息.txt";
     QFile file(fileName);
@@ -389,12 +375,15 @@ void Widget::setVideoAlreadySave()
     {
         qDebug() << file.errorString();
     }
-    file.write(newName.toLatin1());
-//    file.write("\n");
+    //字符转化，能够保存中文，不然用Qt自带的Latin1无法识别中文
+    std::string str = newName.toStdString();
+    const char* ch = str.c_str();
+
+    file.write(ch);
     file.close();
 }
 
-void Widget::seekAndStopStart()
+void Widget::slotSeekAndStopStart()
 {
     //转为时间微秒
     QString strTime =  ui->lineEditBegin->text();
@@ -413,12 +402,10 @@ void Widget::seekAndStopStart()
     thread->getFFmpeg()->setSeekAndSeekTime(true,v);//传入设置的value值
     //不同线程通信，为了让FFmpeg的线程再找到frame后再停下来，这里先跑500ms
     Helper::pauseMs(500);
-    if(thread->getFFmpeg()->getState() == QFFmpeg::PlayingState)
-    {
+    if(thread->getFFmpeg()->getState() == QFFmpeg::PlayingState){
         qDebug() <<"now the state is PlayingState";
         thread->getFFmpeg()->setPause(true);
-    }else if (thread->getFFmpeg()->getState() == QFFmpeg::PausedState)
-    {
+    }else if (thread->getFFmpeg()->getState() == QFFmpeg::PausedState){
         qDebug() <<"now the state is PauseState";
         thread->getFFmpeg()->setPause(false);
     }
@@ -426,7 +413,7 @@ void Widget::seekAndStopStart()
     thread->getFFmpeg()->setPause(true);
 }
 
-void Widget::seekAndStopEnd()
+void Widget::slotSeekAndStopEnd()
 {
     QString endTime =  ui->lineEditEnd->text();
 
@@ -444,12 +431,10 @@ void Widget::seekAndStopEnd()
     thread->getFFmpeg()->setSeekAndSeekTime(true,v);//传入设置的value值
     //不同线程通信，为了让FFmpeg的线程再找到frame后再停下来，这里先跑500ms
     Helper::pauseMs(500);
-    if(thread->getFFmpeg()->getState() == QFFmpeg::PlayingState)
-    {
+    if(thread->getFFmpeg()->getState() == QFFmpeg::PlayingState){
         qDebug() <<"now the state is PlayingState";
         thread->getFFmpeg()->setPause(true);
-    }else if (thread->getFFmpeg()->getState() == QFFmpeg::PausedState)
-    {
+    }else if (thread->getFFmpeg()->getState() == QFFmpeg::PausedState){
         qDebug() <<"now the state is PauseState";
         thread->getFFmpeg()->setPause(false);
     }

@@ -6,7 +6,6 @@
 
 QFFmpegNotShow::QFFmpegNotShow() : QFFmpeg()
 {
-
 }
 
 void QFFmpegNotShow::playLocal()
@@ -37,8 +36,11 @@ void QFFmpegNotShow::playLocal()
             if(startPts == -1){
                 startPts = pAVPacket.pts;
 //                startPts = pAVFormatContext->streams[videoStreamIndex]->start_time;
-                startTime -= 3000000;
+                int startTimeAbsolute = 0;
+                startTime -= 4000000;
+
                 if(startTime < 0 ){
+                    startTimeAbsolute = startTime;
                     startTime = 0;
                 }
 
@@ -46,13 +48,16 @@ void QFFmpegNotShow::playLocal()
                 int target= av_rescale_q(startTime,av_get_time_base_q(),pAVFormatContext->streams[videoStreamIndex]->time_base);
                 av_seek_frame(pAVFormatContext,videoStreamIndex,target+startPts,AVSEEK_FLAG_FRAME); //AV_TIME_BASE
                 av_read_frame(pAVFormatContext, &pAVPacket);
-                startTime += 3000000;
+
+                startTime = startTime + 4000000 + startTimeAbsolute;
+
             }
 
             if(pAVPacket.stream_index==videoStreamIndex){//如果当前的package是视频流
                 qDebug()<<"开始解码"<<QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss")
                        << " 总时长us："<< totalTime;
                 avcodec_decode_video2(pAVCodecContext, pAVFrame, &frameFinished, &pAVPacket);
+                currentTime = av_rescale_q(pAVFrame->pkt_pts-startPts, pAVFormatContext->streams[videoStreamIndex]->time_base,av_get_time_base_q());
                 if (frameFinished){
                     //通过当前的pts进行映射得到currentTime
                     currentTime = av_rescale_q(pAVFrame->pkt_pts-startPts, pAVFormatContext->streams[videoStreamIndex]->time_base,av_get_time_base_q());
@@ -69,7 +74,7 @@ void QFFmpegNotShow::playLocal()
         qDebug()<< "保存图片花费了这么多毫秒："<<time1-time0
                 << "  当前时间是us： "<< currentTime
                 << "  保存图片张数： "<< pictureCount
-                << "  开始时间是："<< startTime
+                << "  开始时间是us："<< startTime
                 << "  结束时间是us：" << endTime;
         av_free_packet(&pAVPacket);//释放资源,否则内存会一直上升.
         qDebug() << "保存路径为： "<< p.getSavePath();

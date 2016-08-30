@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Widget_t {
     QByteArrayData data[18];
-    char stringdata0[208];
+    char stringdata0[240];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,28 +33,29 @@ QT_MOC_LITERAL(0, 0, 6), // "Widget"
 QT_MOC_LITERAL(1, 7, 12), // "sendSavePath"
 QT_MOC_LITERAL(2, 20, 0), // ""
 QT_MOC_LITERAL(3, 21, 8), // "savePath"
-QT_MOC_LITERAL(4, 30, 13), // "showVideoName"
-QT_MOC_LITERAL(5, 44, 16), // "playAndSaveVideo"
-QT_MOC_LITERAL(6, 61, 15), // "getSavePathRoot"
-QT_MOC_LITERAL(7, 77, 9), // "playPause"
-QT_MOC_LITERAL(8, 87, 16), // "slotValueChanged"
-QT_MOC_LITERAL(9, 104, 5), // "value"
-QT_MOC_LITERAL(10, 110, 14), // "slotUpdateTime"
-QT_MOC_LITERAL(11, 125, 4), // "time"
-QT_MOC_LITERAL(12, 130, 16), // "saveVideoPicture"
-QT_MOC_LITERAL(13, 147, 16), // "seekAndStopStart"
-QT_MOC_LITERAL(14, 164, 14), // "seekAndStopEnd"
-QT_MOC_LITERAL(15, 179, 8), // "setImage"
-QT_MOC_LITERAL(16, 188, 5), // "image"
-QT_MOC_LITERAL(17, 194, 13) // "slotPlayVideo"
+QT_MOC_LITERAL(4, 30, 17), // "slotShowVideoName"
+QT_MOC_LITERAL(5, 48, 20), // "slotPlayAndSaveVideo"
+QT_MOC_LITERAL(6, 69, 19), // "slotGetSavePathRoot"
+QT_MOC_LITERAL(7, 89, 13), // "slotPlayPause"
+QT_MOC_LITERAL(8, 103, 16), // "slotValueChanged"
+QT_MOC_LITERAL(9, 120, 5), // "value"
+QT_MOC_LITERAL(10, 126, 14), // "slotUpdateTime"
+QT_MOC_LITERAL(11, 141, 4), // "time"
+QT_MOC_LITERAL(12, 146, 20), // "slotSaveVideoPicture"
+QT_MOC_LITERAL(13, 167, 20), // "slotSeekAndStopStart"
+QT_MOC_LITERAL(14, 188, 18), // "slotSeekAndStopEnd"
+QT_MOC_LITERAL(15, 207, 12), // "slotSetImage"
+QT_MOC_LITERAL(16, 220, 5), // "image"
+QT_MOC_LITERAL(17, 226, 13) // "slotPlayVideo"
 
     },
     "Widget\0sendSavePath\0\0savePath\0"
-    "showVideoName\0playAndSaveVideo\0"
-    "getSavePathRoot\0playPause\0slotValueChanged\0"
-    "value\0slotUpdateTime\0time\0saveVideoPicture\0"
-    "seekAndStopStart\0seekAndStopEnd\0"
-    "setImage\0image\0slotPlayVideo"
+    "slotShowVideoName\0slotPlayAndSaveVideo\0"
+    "slotGetSavePathRoot\0slotPlayPause\0"
+    "slotValueChanged\0value\0slotUpdateTime\0"
+    "time\0slotSaveVideoPicture\0"
+    "slotSeekAndStopStart\0slotSeekAndStopEnd\0"
+    "slotSetImage\0image\0slotPlayVideo"
 };
 #undef QT_MOC_LITERAL
 
@@ -93,7 +94,7 @@ static const uint qt_meta_data_Widget[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Bool,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    9,
     QMetaType::Void, QMetaType::LongLong,   11,
@@ -113,16 +114,17 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->sendSavePath((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 1: _t->showVideoName(); break;
-        case 2: _t->playAndSaveVideo(); break;
-        case 3: _t->getSavePathRoot(); break;
-        case 4: _t->playPause(); break;
+        case 1: _t->slotShowVideoName(); break;
+        case 2: _t->slotPlayAndSaveVideo(); break;
+        case 3: { bool _r = _t->slotGetSavePathRoot();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 4: _t->slotPlayPause(); break;
         case 5: _t->slotValueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 6: _t->slotUpdateTime((*reinterpret_cast< qint64(*)>(_a[1]))); break;
-        case 7: _t->saveVideoPicture(); break;
-        case 8: _t->seekAndStopStart(); break;
-        case 9: _t->seekAndStopEnd(); break;
-        case 10: _t->setImage((*reinterpret_cast< const QImage(*)>(_a[1]))); break;
+        case 7: _t->slotSaveVideoPicture(); break;
+        case 8: _t->slotSeekAndStopStart(); break;
+        case 9: _t->slotSeekAndStopEnd(); break;
+        case 10: _t->slotSetImage((*reinterpret_cast< const QImage(*)>(_a[1]))); break;
         case 11: _t->slotPlayVideo(); break;
         default: ;
         }

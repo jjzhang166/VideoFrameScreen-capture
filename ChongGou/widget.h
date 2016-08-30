@@ -27,16 +27,15 @@ public:
     void setVideoAlreadySave();
 
 public slots:
-        void showVideoName();
-        void playAndSaveVideo();
-        void getSavePathRoot();
-
-        void playPause();
+        void slotShowVideoName();
+        void slotPlayAndSaveVideo();
+        bool slotGetSavePathRoot();
+        void slotPlayPause();
         void slotValueChanged(int value);
         void slotUpdateTime(qint64 time);
-        void saveVideoPicture();
-        void seekAndStopStart();
-        void seekAndStopEnd();
+        void slotSaveVideoPicture();
+        void slotSeekAndStopStart();
+        void slotSeekAndStopEnd();
 private:
     Ui::Widget *ui;
     QString savePathRoot;
@@ -49,7 +48,7 @@ private:
     PlayThread *thread;
 
 private slots:
-    void setImage(const QImage &image);
+    void slotSetImage(const QImage &image);
     void slotPlayVideo();
 
 signals:

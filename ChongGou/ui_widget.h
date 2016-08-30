@@ -30,7 +30,6 @@ class Ui_Widget
 public:
     QLabel *labelVideo;
     QPushButton *pushButtonOpen;
-    QPushButton *pushButtonSavePath;
     QListWidget *listWidget;
     QLineEdit *lineEditOpen;
     QLineEdit *lineEditSave;
@@ -50,13 +49,14 @@ public:
     QRadioButton *radioLeft;
     QRadioButton *radioRight;
     QLineEdit *lineEditSetGDTime;
-    QPushButton *pushButtonSetGDTime;
     QPushButton *pushButtonPlay;
     QPushButton *pushButtonLast;
     QPushButton *pushButtonNext;
     QLineEdit *lineEdit;
     QLabel *label_4;
     QPushButton *pushButtonSetting;
+    QLabel *label_5;
+    QLabel *label_6;
 
     void setupUi(QWidget *Widget)
     {
@@ -73,12 +73,9 @@ public:
         pushButtonOpen = new QPushButton(Widget);
         pushButtonOpen->setObjectName(QStringLiteral("pushButtonOpen"));
         pushButtonOpen->setGeometry(QRect(20, 850, 151, 31));
-        pushButtonSavePath = new QPushButton(Widget);
-        pushButtonSavePath->setObjectName(QStringLiteral("pushButtonSavePath"));
-        pushButtonSavePath->setGeometry(QRect(20, 890, 151, 31));
         listWidget = new QListWidget(Widget);
         listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setGeometry(QRect(1350, 20, 341, 721));
+        listWidget->setGeometry(QRect(1350, 20, 721, 721));
         lineEditOpen = new QLineEdit(Widget);
         lineEditOpen->setObjectName(QStringLiteral("lineEditOpen"));
         lineEditOpen->setGeometry(QRect(180, 850, 321, 31));
@@ -143,9 +140,6 @@ public:
         lineEditSetGDTime = new QLineEdit(Widget);
         lineEditSetGDTime->setObjectName(QStringLiteral("lineEditSetGDTime"));
         lineEditSetGDTime->setGeometry(QRect(1180, 780, 111, 31));
-        pushButtonSetGDTime = new QPushButton(Widget);
-        pushButtonSetGDTime->setObjectName(QStringLiteral("pushButtonSetGDTime"));
-        pushButtonSetGDTime->setGeometry(QRect(1020, 780, 151, 31));
         pushButtonPlay = new QPushButton(Widget);
         pushButtonPlay->setObjectName(QStringLiteral("pushButtonPlay"));
         pushButtonPlay->setGeometry(QRect(824, 870, 81, 51));
@@ -164,6 +158,12 @@ public:
         pushButtonSetting = new QPushButton(Widget);
         pushButtonSetting->setObjectName(QStringLiteral("pushButtonSetting"));
         pushButtonSetting->setGeometry(QRect(1350, 780, 81, 31));
+        label_5 = new QLabel(Widget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(1030, 780, 141, 31));
+        label_6 = new QLabel(Widget);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(60, 890, 111, 31));
 
         retranslateUi(Widget);
 
@@ -175,12 +175,11 @@ public:
         Widget->setWindowTitle(QApplication::translate("Widget", "Widget", 0));
         labelVideo->setText(QApplication::translate("Widget", " Video Stream", 0));
         pushButtonOpen->setText(QApplication::translate("Widget", "\346\211\223\345\274\200\350\247\206\351\242\221\350\267\257\345\276\204", 0));
-        pushButtonSavePath->setText(QApplication::translate("Widget", "\350\256\276\347\275\256\350\247\206\351\242\221\344\277\235\345\255\230\350\267\257\345\276\204\346\240\271\347\233\256\345\275\225", 0));
         lineEditOpen->setText(QApplication::translate("Widget", "F:\\\346\234\211Bug\347\232\204\350\247\206\351\242\221", 0));
         lineEditSave->setText(QApplication::translate("Widget", "D:\\\350\247\206\351\242\221\344\277\235\345\255\230", 0));
         pushButtonSavePicture->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\350\247\206\351\242\221\346\256\265", 0));
-        lineEditBegin->setText(QApplication::translate("Widget", "00-20-500", 0));
-        lineEditEnd->setText(QApplication::translate("Widget", "00-30-700", 0));
+        lineEditBegin->setText(QApplication::translate("Widget", "00-11-280", 0));
+        lineEditEnd->setText(QApplication::translate("Widget", "00-11-780", 0));
         label->setText(QApplication::translate("Widget", "Begin:", 0));
         label_2->setText(QApplication::translate("Widget", "End:", 0));
         label_3->setText(QApplication::translate("Widget", "\345\210\206-\347\247\222-\346\257\253", 0));
@@ -190,12 +189,13 @@ public:
         radioLeft->setText(QApplication::translate("Widget", "L", 0));
         radioRight->setText(QApplication::translate("Widget", "R", 0));
         lineEditSetGDTime->setText(QApplication::translate("Widget", "5", 0));
-        pushButtonSetGDTime->setText(QApplication::translate("Widget", "\350\256\276\347\275\256\350\277\207\345\272\246\344\270\212\344\270\213\345\256\242\346\227\266\351\227\264\357\274\210s\357\274\211", 0));
         pushButtonPlay->setText(QApplication::translate("Widget", "\346\232\202\345\201\234/\346\222\255\346\224\276", 0));
         pushButtonLast->setText(QApplication::translate("Widget", "\344\270\212\344\270\200\351\246\226", 0));
         pushButtonNext->setText(QApplication::translate("Widget", "\344\270\213\344\270\200\351\246\226", 0));
         label_4->setText(QApplication::translate("Widget", "\346\222\255\346\224\276\350\267\257\345\276\204\357\274\232", 0));
         pushButtonSetting->setText(QApplication::translate("Widget", "\350\256\276\347\275\256", 0));
+        label_5->setText(QApplication::translate("Widget", "\350\256\276\347\275\256\350\277\207\345\272\246\344\270\212\344\270\213\345\256\242\346\227\266\351\227\264\357\274\210s\357\274\211", 0));
+        label_6->setText(QApplication::translate("Widget", "\350\247\206\351\242\221\344\277\235\345\255\230\350\267\257\345\276\204\346\240\271\347\233\256\345\275\225", 0));
     } // retranslateUi
 
 };

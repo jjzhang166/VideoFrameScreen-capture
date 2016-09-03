@@ -59,311 +59,311 @@ release-install: FORCE
 release-uninstall: FORCE
 	$(MAKE) -f $(MAKEFILE).Release uninstall
 
-Makefile: TrafficTools.pro ../../../Program/Qt/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf ../../../Program/Qt/5.7/mingw53_32/mkspecs/features/spec_pre.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/qdevice.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/device_config.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/common/angle.conf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/qconfig.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dcore.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dcore_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dextras.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dextras_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dinput.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dinput_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dlogic.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dlogic_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquick.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquick_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickextras.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickextras_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickinput.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickinput_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickrender.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickrender_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3drender.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3drender_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axbase.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axbase_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axcontainer.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axcontainer_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axserver.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axserver_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bootstrap_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_clucene_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designercomponents_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_help.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_help_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_location.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_location_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimedia.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimedia_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimediawidgets.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_network.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_network_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_nfc.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_nfc_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_opengl.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_opengl_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_openglextensions.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_openglextensions_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_packetprotocol_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_platformsupport_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_positioning.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_positioning_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmldebug_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmldevtools_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmltest.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmltest_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quick.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quick_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickcontrols2.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickparticles_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sql.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sql_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_svg.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_svg_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_testlib.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_testlib_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uiplugin.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uitools.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uitools_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_webchannel.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_webchannel_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_websockets.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_websockets_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_widgets.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_widgets_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_winextras.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_winextras_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xml.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xml_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xmlpatterns.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/qt_functions.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/qt_config.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/win32/qt_config.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/spec_post.prf \
+Makefile: TrafficTools.pro F:/Program/Qt/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf F:/Program/Qt/5.7/mingw53_32/mkspecs/features/spec_pre.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/qdevice.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/device_config.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/common/angle.conf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/qconfig.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dcore.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dcore_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dextras.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dextras_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dinput.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dinput_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dlogic.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dlogic_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquick.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquick_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickextras.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickextras_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickinput.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickinput_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickrender.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickrender_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3drender.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3drender_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axbase.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axbase_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axcontainer.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axcontainer_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axserver.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axserver_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_clucene_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designercomponents_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_help.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_help_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_location.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_location_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimedia.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimedia_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimediawidgets.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_network.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_network_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_nfc.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_nfc_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_opengl.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_opengl_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_openglextensions.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_openglextensions_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_packetprotocol_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_platformsupport_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_positioning.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_positioning_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmldebug_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmldevtools_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmltest.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmltest_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quick.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quick_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickcontrols2.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickparticles_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sql.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sql_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_svg.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_svg_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_testlib.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_testlib_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uiplugin.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uitools.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uitools_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_webchannel.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_webchannel_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_websockets.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_websockets_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_widgets.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_widgets_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_winextras.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_winextras_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xml.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xml_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xmlpatterns.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/qt_functions.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/qt_config.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/win32/qt_config.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/spec_post.prf \
 		.qmake.stash \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/exclusive_builds.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/default_pre.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/win32/default_pre.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/resolve_config.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/exclusive_builds_post.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/default_post.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/qml_debug.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/win32/rtti.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/precompile_header.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/warn_on.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/qt.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/resources.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/moc.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/win32/opengl.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/uic.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/file_copies.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/win32/windows.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/testcase_targets.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/exceptions.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/yacc.prf \
-		../../../Program/Qt/5.7/mingw53_32/mkspecs/features/lex.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/exclusive_builds.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/default_pre.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/win32/default_pre.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/resolve_config.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/exclusive_builds_post.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/default_post.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/qml_debug.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/win32/rtti.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/precompile_header.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/warn_on.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/qt.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/resources.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/moc.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/win32/opengl.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/uic.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/file_copies.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/win32/windows.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/testcase_targets.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/exceptions.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/yacc.prf \
+		F:/Program/Qt/5.7/mingw53_32/mkspecs/features/lex.prf \
 		TrafficTools.pro \
-		../../../Program/Qt/5.7/mingw53_32/lib/qtmaind.prl \
-		../../../Program/Qt/5.7/mingw53_32/lib/Qt5Widgets.prl \
-		../../../Program/Qt/5.7/mingw53_32/lib/Qt5Gui.prl \
-		../../../Program/Qt/5.7/mingw53_32/lib/Qt5Network.prl \
-		../../../Program/Qt/5.7/mingw53_32/lib/Qt5Sql.prl \
-		../../../Program/Qt/5.7/mingw53_32/lib/Qt5Core.prl
+		F:/Program/Qt/5.7/mingw53_32/lib/qtmaind.prl \
+		F:/Program/Qt/5.7/mingw53_32/lib/Qt5Widgets.prl \
+		F:/Program/Qt/5.7/mingw53_32/lib/Qt5Gui.prl \
+		F:/Program/Qt/5.7/mingw53_32/lib/Qt5Network.prl \
+		F:/Program/Qt/5.7/mingw53_32/lib/Qt5Sql.prl \
+		F:/Program/Qt/5.7/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile TrafficTools.pro
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/spec_pre.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/qdevice.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/device_config.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/common/angle.conf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/qconfig.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dcore.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dcore_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dextras.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dextras_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dinput.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dinput_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dlogic.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dlogic_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquick.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquick_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickextras.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickextras_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickinput.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickinput_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickrender.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickrender_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3drender.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3drender_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axbase.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axbase_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axcontainer.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axcontainer_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axserver.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axserver_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bootstrap_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_clucene_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designercomponents_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_help.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_help_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_location.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_location_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimedia.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimedia_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimediawidgets.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_network.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_network_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_nfc.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_nfc_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_opengl.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_opengl_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_openglextensions.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_openglextensions_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_packetprotocol_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_platformsupport_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_positioning.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_positioning_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmldebug_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmldevtools_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmltest.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmltest_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quick.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quick_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickcontrols2.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickcontrols2_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickparticles_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sql.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sql_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_svg.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_svg_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_testlib.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_testlib_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uiplugin.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uitools.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uitools_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_webchannel.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_webchannel_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_websockets.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_websockets_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_widgets.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_widgets_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_winextras.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_winextras_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xml.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xml_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xmlpatterns.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xmlpatterns_private.pri:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/qt_functions.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/qt_config.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/win32/qt_config.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/spec_post.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/spec_pre.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/qdevice.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/device_config.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/common/angle.conf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/qconfig.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dcore.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dcore_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dextras.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dextras_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dinput.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dinput_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dlogic.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dlogic_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquick.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquick_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickextras.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickextras_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickinput.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickinput_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickrender.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3dquickrender_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3drender.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_3drender_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axbase.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axbase_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axcontainer.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axcontainer_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axserver.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_axserver_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bluetooth_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_bootstrap_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_clucene_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_concurrent_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_core_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_dbus_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designer_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_designercomponents_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gamepad_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_gui_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_help.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_help_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_location.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_location_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimedia.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimedia_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimediawidgets.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_network.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_network_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_nfc.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_nfc_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_opengl.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_opengl_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_openglextensions.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_openglextensions_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_packetprotocol_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_platformsupport_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_positioning.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_positioning_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_printsupport_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_purchasing_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qml_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmldebug_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmldevtools_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmltest.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qmltest_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quick.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quick_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickcontrols2.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickcontrols2_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickparticles_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_quickwidgets_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_script_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scripttools_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_scxml_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sensors_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialbus_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_serialport_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sql.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_sql_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_svg.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_svg_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_testlib.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_testlib_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uiplugin.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uitools.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_uitools_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_webchannel.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_webchannel_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_websockets.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_websockets_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_widgets.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_widgets_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_winextras.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_winextras_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xml.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xml_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xmlpatterns.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/modules/qt_lib_xmlpatterns_private.pri:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/qt_functions.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/qt_config.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/win32/qt_config.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/spec_post.prf:
 .qmake.stash:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/exclusive_builds.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/default_pre.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/win32/default_pre.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/resolve_config.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/exclusive_builds_post.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/default_post.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/qml_debug.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/win32/rtti.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/precompile_header.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/warn_on.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/qt.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/resources.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/moc.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/win32/opengl.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/uic.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/file_copies.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/win32/windows.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/testcase_targets.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/exceptions.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/yacc.prf:
-../../../Program/Qt/5.7/mingw53_32/mkspecs/features/lex.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/exclusive_builds.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/default_pre.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/win32/default_pre.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/resolve_config.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/exclusive_builds_post.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/default_post.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/qml_debug.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/win32/rtti.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/precompile_header.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/warn_on.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/qt.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/resources.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/moc.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/win32/opengl.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/uic.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/file_copies.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/win32/windows.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/testcase_targets.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/exceptions.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/yacc.prf:
+F:/Program/Qt/5.7/mingw53_32/mkspecs/features/lex.prf:
 TrafficTools.pro:
-../../../Program/Qt/5.7/mingw53_32/lib/qtmaind.prl:
-../../../Program/Qt/5.7/mingw53_32/lib/Qt5Widgets.prl:
-../../../Program/Qt/5.7/mingw53_32/lib/Qt5Gui.prl:
-../../../Program/Qt/5.7/mingw53_32/lib/Qt5Network.prl:
-../../../Program/Qt/5.7/mingw53_32/lib/Qt5Sql.prl:
-../../../Program/Qt/5.7/mingw53_32/lib/Qt5Core.prl:
+F:/Program/Qt/5.7/mingw53_32/lib/qtmaind.prl:
+F:/Program/Qt/5.7/mingw53_32/lib/Qt5Widgets.prl:
+F:/Program/Qt/5.7/mingw53_32/lib/Qt5Gui.prl:
+F:/Program/Qt/5.7/mingw53_32/lib/Qt5Network.prl:
+F:/Program/Qt/5.7/mingw53_32/lib/Qt5Sql.prl:
+F:/Program/Qt/5.7/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile TrafficTools.pro
 

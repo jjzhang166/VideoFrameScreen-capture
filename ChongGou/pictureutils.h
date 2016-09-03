@@ -21,6 +21,7 @@ signals:
 
 private:
     QString savePath;
+
 };
 
 #endif // PICTUREUTILS_H

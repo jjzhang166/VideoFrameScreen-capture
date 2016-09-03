@@ -37,17 +37,20 @@ public:
     };
 
     bool Init();
-    State getState(){return currentState;}
+    void seek();
+
+    void setPlaying(bool p){playing = p;}
+    void setPause(bool b){neededPause = b;}
+
     void SetUrl(QString url){this->url=url;}
     QString Url()const{return url;}
+
+    State getState(){return currentState;}
     int VideoWidth()const{return videoWidth;}
     int VideoHeight()const{return videoHeight;}
     bool getPlaying(){return playing;}
-    void setPlaying(bool p){playing = p;}
-    void setPause(bool b){neededPause = b;}
     void setSeekAndSeekTime(bool s,qint64 t){neededSeek = s;seekTime = t;}//先将neededSeek设置成true才能调用seek方法
     QString getPath(){return savePath;}
-    void seek();
 
     qint64 getCurrentTime(){return currentTime;}
     qint64 getTotalTime(){return totalTime;}
@@ -70,8 +73,9 @@ protected:
     bool playing;
     bool isInit;
     bool neededPause;
-    bool neededSeek;
     State currentState;
+
+    bool neededSeek;
     qint64 currentTime;
     qint64 totalTime;
     qint64 seekTime;

@@ -24,12 +24,14 @@ QFFmpeg::QFFmpeg(QObject *parent) :
 
 QFFmpeg::~QFFmpeg()
 {
+    if (isInit)
+    {
+        avcodec_close(pAVCodecContext);
+//        av_close_input_file(pAVFormatContext);
+        sws_freeContext(pSwsContext);//吗的这个智障free浪费了我一天！！！一天的时间怀疑自己的代码逻辑正确性！指针有毒啊！
+    }
     avformat_free_context(pAVFormatContext);
     av_frame_free(&pAVFrame);
-    if(isInit)
-    {
-        sws_freeContext(pSwsContext);
-    }
 }
 
 bool QFFmpeg::Init()
@@ -163,9 +165,14 @@ void QFFmpeg::playLocal()
                     //通过当前的pts进行映射得到currentTime
                     currentTime = av_rescale_q(pAVFrame->pkt_pts-startPts, pAVFormatContext->streams[videoStreamIndex]->time_base,av_get_time_base_q());
 
-//                    qDebug()<<"**********" <<  pAVFrame->pkt_pos << "***********" << pAVFrame->pkt_size<< "***********"
-//                    << pAVFrame->pkt_duration<< "***********" << pAVFrame->pkt_dts
-//                    <<"**********" <<currentTime <<"**********" <<  pAVFrame->pkt_pts;
+//                    qDebug()<<"pAVFrame->pkt_pos: "  << pAVFrame->pkt_pos
+//                            <<"pAVFrame->pkt_size: " << pAVFrame->pkt_size
+//                            <<"pAVFrame->pkt_duration:" << pAVFrame->pkt_duration
+//                            <<"pAVFrame->pkt_dts:" << pAVFrame->pkt_dts
+//                            <<"currentTime :" <<currentTime
+//                            <<"pAVFrame->pkt_pts;" <<  pAVFrame->pkt_pts
+//                            <<"pAVFormatContext->streams[videoStreamIndex]->time_base.num:" << pAVFormatContext->streams[videoStreamIndex]->time_base.num
+//                            <<"pAVFormatContext->streams[videoStreamIndex]->time_base.den:" << pAVFormatContext->streams[videoStreamIndex]->time_base.den;
 //                    mutex.lock();
                     sws_scale(pSwsContext,(const uint8_t* const *)pAVFrame->data,pAVFrame->linesize,0,videoHeight,pAVPicture.data,pAVPicture.linesize);
                     //发送获取一帧图像信号

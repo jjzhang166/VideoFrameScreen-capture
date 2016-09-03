@@ -146,11 +146,11 @@ public:
            int minutes = strTimeList.at(0).toInt();
            int seconds = strTimeList.at(1).toInt();
            int milliseconds = strTimeList.at(2).toInt();
-           if(minutes<0||minutes>=60 ||seconds<0||seconds>=60||milliseconds<0||milliseconds>=1000){
+           if(minutes<0||minutes>=600 ||seconds<0||seconds>=60||milliseconds<0||milliseconds>=1000){
                return false;
            }
 
-           qint64 SXKstartTime = minutes*60*1000000+seconds*1000000+milliseconds*1000;
+           qint64 SXKstartTime = (qint64)minutes*60*1000000+(qint64)seconds*1000000+(qint64)milliseconds*1000;
            QStringList endTimeList = endTime.split("-");
            if(endTimeList.size() != 3){
                  return false;
@@ -158,10 +158,10 @@ public:
            minutes = endTimeList.at(0).toInt();
            seconds = endTimeList.at(1).toInt();
            milliseconds = endTimeList.at(2).toInt();
-           if(minutes<0||minutes>=60 ||seconds<0||seconds>=60||milliseconds<0||milliseconds>=1000){
+           if(minutes<0||minutes>=600 ||seconds<0||seconds>=60||milliseconds<0||milliseconds>=1000){
                 return false;
            }
-           qint64 SXKendTime = minutes*60*1000000+seconds*1000000+milliseconds*1000;
+           qint64 SXKendTime = (qint64)minutes*60*1000000+(qint64)seconds*1000000+(qint64)milliseconds*1000;
            if(SXKstartTime >= SXKendTime ){
                return false;
            }
@@ -185,11 +185,14 @@ public:
            int minutes = timeList.at(0).toInt();
            int seconds = timeList.at(1).toInt();
            int milliseconds = timeList.at(2).toInt();
-           if(minutes<0||minutes>=60 ||seconds<0||seconds>=60||milliseconds<0||milliseconds>=1000){
+           if(minutes<0||minutes>=600 ||seconds<0||seconds>=60||milliseconds<0||milliseconds>=1000){
                return -1;
            }
-           qint64 SXKTime = minutes*60*1000000+seconds*1000000+milliseconds*1000;
-
+           qint64 SXKTime = (qint64)minutes*60*1000000+(qint64)seconds*1000000+(qint64)milliseconds*1000;
+           qDebug() << (qint64)minutes*60*1000000 << "minutesminutesminutesminutes"
+                  << seconds << "secondssecondssecondsseconds"
+                  << milliseconds << "millisecondsmillisecondsmilliseconds"
+                  << SXKTime << "SXKTimeSXKTimeSXKTimeSXKTimeSXKTimeSXKTimeSXKTime";
            return SXKTime;
        }
 
@@ -200,6 +203,20 @@ public:
            picName = path + "\\" + picName;
            return picName;
        }
+
+       static QString getSavePictureName(QString _path,int index ){
+            QStringList l = _path.split("\\");
+            int lenth = l.length();
+            QString picName = l.at(lenth-1);
+            for(int k = 0; k < index ; k++){
+                picName = l.at(lenth-k-2)  +"-" + picName;
+            }
+            picName = _path + "\\" + picName;
+
+            qDebug()<<"picName is:"<< picName;
+            return picName;
+       }
+
 
 
 };

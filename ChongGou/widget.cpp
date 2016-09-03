@@ -36,6 +36,13 @@ Widget::Widget(QWidget *parent) :
     connect(ui->listWidget,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(slotPlayAndSaveVideo()));
     connect(ui->pushButtonPlay,SIGNAL(clicked(bool)),this,SLOT(slotPlayPause()));
     connect(ui->horizontalSlider,SIGNAL(sliderMoved(int)),this,SLOT(slotValueChanged(int)));
+
+    ui->horizontalSlider->installEventFilter(this);
+    ui->pushButtonPlay->installEventFilter(this);
+    ui->lineEditSetGapTime->installEventFilter(this);
+    ui->listWidget->installEventFilter(this);
+    ui->labelVideo->installEventFilter(this);
+    installEventFilter(this);
 }
 
 Widget::~Widget()
@@ -178,12 +185,6 @@ void Widget::resetQFFmpeg()
     }
 }
 
-void Widget::keyPressEvent(QKeyEvent *event)
-{
-    if (event->key() == Qt::Key_Backspace )
-    qDebug() << "***************************************************************************";
-}
-
 /*
  * 点击暂停按钮发生的事件
  * */
@@ -226,12 +227,23 @@ void Widget::slotValueChanged(int value)
 
 /*
  * 点击add按钮发生的事情
+ * 1 如果没有视频播放则退出
  * */
 
 void Widget::slotSaveVideoPicture()
 {
     //得到截取视频的起始时间和终止时间的long值
     //将输入的时间格式转换为微秒，by zjy
+
+    if(thread->getFFmpeg()->getState() != QFFmpeg::PlayingState){
+        QMessageBox::about(this,"","只能保存当前正在播放的视频，当前无视频播放不保存图片");
+        return;
+    }
+
+    savePathRoot = ui->lineEditSave->text();
+    savePathRoot += "\\";  //更新savePathRoot
+    QString videoName = Helper::getVideoNameFromDir(ui->listWidget->currentItem()->text());//取消后缀
+    saveSXKSetedPath = savePathRoot + videoName;//s键按下的时候的路径
 
     qint64 totalTime = thread->getFFmpeg()->getTotalTime()*96/100;
     if(ui->lineEditBegin->text().isEmpty() && ui->lineEditEnd->text().isEmpty() ){//同时为空
@@ -253,6 +265,11 @@ void Widget::slotSaveVideoPicture()
         //截取上下客视频
         qint64 SXKstartTime = Helper::getTimeFromLineEdit(ui->lineEditBegin->text());
         qint64 SXKendTime = Helper::getTimeFromLineEdit(ui->lineEditEnd->text());
+        if(ui->radioS->isChecked()){ //若s按钮按下的
+             savePicture(SXKstartTime,SXKendTime,0);
+             setVideoAlreadySave();//设置已保存
+             return;
+        }
         savePicture(SXKstartTime,SXKendTime,0);
 
         //得到过度上下客左侧的起始时间和终止时间的long值
@@ -299,7 +316,8 @@ void Widget::savePicture(qint64 startTime,qint64 endTime,int type)
     ffmpegNotShow->setStartTime(startTime);
     ffmpegNotShow->setEndTime(endTime);
 
-    qDebug() << startTime << "*****************" << endTime;
+    qDebug() << "传给ffmpegNotShow的开始时间是：" << startTime
+             << "传给ffmpegNotShow的结束时间是：" << endTime;
 
     QThreadNotShow *t = new QThreadNotShow();
     t->setFFmpeg(ffmpegNotShow);
@@ -310,8 +328,19 @@ void Widget::savePicture(qint64 startTime,qint64 endTime,int type)
              ffmpegNotShow->setSaveType(1);
         }else if(ui->radioLeft->isChecked()){
              ffmpegNotShow->setSaveType(2);
-        }else{
+        }else if(ui->radioRight->isChecked()){
              ffmpegNotShow->setSaveType(3);
+        }else{
+
+            ffmpegNotShow->setSaveType(4);  //不是前三种，QFFmpegNotShow的type设置为4
+            QString setNumber = ui->lineEditSetSavePath->text();
+            int numberSet = setNumber.toInt();
+            if( numberSet< 0 ||numberSet>3 ){
+                QMessageBox::warning(this,"","输入范围必须是0~3！",QMessageBox::Ok);
+                return;
+            }
+            saveSXKSetedPath = saveSXKSetedPath +"\\" + setNumber ; //加入视频号和所选设置号
+            qDebug()<<"saveSXKSetedPath: "  <<  saveSXKSetedPath;
         }
     }
     else{
@@ -323,8 +352,14 @@ void Widget::savePicture(qint64 startTime,qint64 endTime,int type)
     if(ffmpegNotShow->Init()){
         connect(this,SIGNAL(sendSavePath(QString)),ffmpegNotShow,SLOT(getSavePath(QString)));
         if (type == 0){
-            emit sendSavePath(saveSXKPath);
-            qDebug() << "保存上下客视频" << saveSXKPath;
+            if(ui->radioS->isChecked()){  //如果按钮S被按下，则发送saveSXKSetedPath
+
+                emit sendSavePath(saveSXKSetedPath);
+                qDebug() << "保存上下客视频" << saveSXKSetedPath;
+            }else{
+                emit sendSavePath(saveSXKPath);
+                qDebug() << "保存上下客视频" << saveSXKPath;
+            }
         }
         else if (type == 1 ){
             emit sendSavePath(saveGDSXKLPath);
@@ -441,3 +476,26 @@ void Widget::slotSeekAndStopEnd()
     Helper::pauseMs(500);
     thread->getFFmpeg()->setPause(true);
 }
+
+void Widget::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Space  ){
+        qDebug() << "Qt::Key_BackspaceQt::Key_BackspaceQt::Key_BackspaceQt::Key_BackspaceQt::Key_BackspaceQt::Key_Backspace";
+        slotPlayPause();
+    }
+
+    if (ui->horizontalSlider->value()>995 || thread->getFFmpeg()->getState() == QFFmpeg::PausedState){//防止过度快进出现无法自动播放下一个视频的bug出现
+        return;
+    }
+    if (event->key() == Qt::Key_Right){
+        QString gapTimeStr = ui->lineEditSetGapTime->text();
+        int gapTime = gapTimeStr.toInt();
+        slotValueChanged(ui->horizontalSlider->value()+gapTime);
+        qDebug() << ui->horizontalSlider->value()+10 << "Qt::Key_RightQt::Key_RightQt::Key_RightQt::Key_RightQt::Key_RightQt::Key_Right";
+    }
+    if ( event->key() == Qt::Key_Left){
+        slotValueChanged(ui->horizontalSlider->value()-2);
+        qDebug() << ui->horizontalSlider->value()-2 <<"Qt::Key_LeftQt::Key_LeftQt::Key_LeftQt::Key_LeftQt::Key_LeftQt::Key_LeftQt::Key_LeftQt::Key_Left";
+    }
+}
+

@@ -8,4 +8,5 @@ void  QThreadNotShow::run()
     ffmpeg->playLocal();
     delete ffmpeg;
     ffmpeg = Q_NULLPTR;
+    delete this;
 }

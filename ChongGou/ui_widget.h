@@ -43,11 +43,6 @@ public:
     QLabel *label_3;
     QPushButton *pushButtonDingWeiStart;
     QPushButton *pushButtonDingWeiEnd;
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout_2;
-    QRadioButton *radioLR;
-    QRadioButton *radioLeft;
-    QRadioButton *radioRight;
     QLineEdit *lineEditSetGDTime;
     QPushButton *pushButtonPlay;
     QPushButton *pushButtonLast;
@@ -57,16 +52,27 @@ public:
     QPushButton *pushButtonSetting;
     QLabel *label_5;
     QLabel *label_6;
+    QLabel *label_7;
+    QLineEdit *lineEditSetSavePath;
+    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QRadioButton *radioLR;
+    QRadioButton *radioLeft;
+    QRadioButton *radioRight;
+    QRadioButton *radioS;
+    QLabel *label_8;
+    QLineEdit *lineEditSetGapTime;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QStringLiteral("Widget"));
-        Widget->resize(1520, 927);
+        Widget->resize(1750, 927);
         labelVideo = new QLabel(Widget);
         labelVideo->setObjectName(QStringLiteral("labelVideo"));
         labelVideo->setGeometry(QRect(40, 20, 1301, 721));
         labelVideo->setMinimumSize(QSize(300, 310));
+        labelVideo->setFocusPolicy(Qt::ClickFocus);
         labelVideo->setFrameShape(QFrame::Panel);
         labelVideo->setFrameShadow(QFrame::Sunken);
         labelVideo->setAlignment(Qt::AlignCenter);
@@ -113,48 +119,24 @@ public:
         pushButtonDingWeiEnd = new QPushButton(Widget);
         pushButtonDingWeiEnd->setObjectName(QStringLiteral("pushButtonDingWeiEnd"));
         pushButtonDingWeiEnd->setGeometry(QRect(870, 780, 75, 23));
-        layoutWidget = new QWidget(Widget);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(260, 820, 271, 18));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        radioLR = new QRadioButton(layoutWidget);
-        radioLR->setObjectName(QStringLiteral("radioLR"));
-        radioLR->setChecked(true);
-
-        horizontalLayout_2->addWidget(radioLR);
-
-        radioLeft = new QRadioButton(layoutWidget);
-        radioLeft->setObjectName(QStringLiteral("radioLeft"));
-
-        horizontalLayout_2->addWidget(radioLeft);
-
-        radioRight = new QRadioButton(layoutWidget);
-        radioRight->setObjectName(QStringLiteral("radioRight"));
-
-        horizontalLayout_2->addWidget(radioRight);
-
         lineEditSetGDTime = new QLineEdit(Widget);
         lineEditSetGDTime->setObjectName(QStringLiteral("lineEditSetGDTime"));
         lineEditSetGDTime->setGeometry(QRect(1180, 780, 111, 31));
         pushButtonPlay = new QPushButton(Widget);
         pushButtonPlay->setObjectName(QStringLiteral("pushButtonPlay"));
-        pushButtonPlay->setGeometry(QRect(824, 870, 81, 51));
+        pushButtonPlay->setGeometry(QRect(824, 890, 81, 31));
         pushButtonLast = new QPushButton(Widget);
         pushButtonLast->setObjectName(QStringLiteral("pushButtonLast"));
-        pushButtonLast->setGeometry(QRect(690, 870, 81, 51));
+        pushButtonLast->setGeometry(QRect(690, 890, 81, 31));
         pushButtonNext = new QPushButton(Widget);
         pushButtonNext->setObjectName(QStringLiteral("pushButtonNext"));
-        pushButtonNext->setGeometry(QRect(950, 870, 81, 51));
+        pushButtonNext->setGeometry(QRect(950, 890, 81, 31));
         lineEdit = new QLineEdit(Widget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(690, 830, 601, 31));
+        lineEdit->setGeometry(QRect(740, 830, 551, 31));
         label_4 = new QLabel(Widget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(610, 830, 71, 31));
+        label_4->setGeometry(QRect(670, 830, 71, 31));
         pushButtonSetting = new QPushButton(Widget);
         pushButtonSetting->setObjectName(QStringLiteral("pushButtonSetting"));
         pushButtonSetting->setGeometry(QRect(1350, 780, 81, 31));
@@ -164,6 +146,47 @@ public:
         label_6 = new QLabel(Widget);
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setGeometry(QRect(60, 890, 111, 31));
+        label_7 = new QLabel(Widget);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(510, 820, 61, 20));
+        lineEditSetSavePath = new QLineEdit(Widget);
+        lineEditSetSavePath->setObjectName(QStringLiteral("lineEditSetSavePath"));
+        lineEditSetSavePath->setGeometry(QRect(540, 820, 51, 21));
+        layoutWidget = new QWidget(Widget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(261, 820, 231, 18));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        radioLR = new QRadioButton(layoutWidget);
+        radioLR->setObjectName(QStringLiteral("radioLR"));
+        radioLR->setChecked(true);
+
+        horizontalLayout->addWidget(radioLR);
+
+        radioLeft = new QRadioButton(layoutWidget);
+        radioLeft->setObjectName(QStringLiteral("radioLeft"));
+
+        horizontalLayout->addWidget(radioLeft);
+
+        radioRight = new QRadioButton(layoutWidget);
+        radioRight->setObjectName(QStringLiteral("radioRight"));
+
+        horizontalLayout->addWidget(radioRight);
+
+        radioS = new QRadioButton(layoutWidget);
+        radioS->setObjectName(QStringLiteral("radioS"));
+
+        horizontalLayout->addWidget(radioS);
+
+        label_8 = new QLabel(Widget);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(80, 810, 121, 21));
+        lineEditSetGapTime = new QLineEdit(Widget);
+        lineEditSetGapTime->setObjectName(QStringLiteral("lineEditSetGapTime"));
+        lineEditSetGapTime->setGeometry(QRect(30, 810, 51, 20));
 
         retranslateUi(Widget);
 
@@ -178,16 +201,13 @@ public:
         lineEditOpen->setText(QApplication::translate("Widget", "F:\\\346\234\211Bug\347\232\204\350\247\206\351\242\221", 0));
         lineEditSave->setText(QApplication::translate("Widget", "D:\\\350\247\206\351\242\221\344\277\235\345\255\230", 0));
         pushButtonSavePicture->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\350\247\206\351\242\221\346\256\265", 0));
-        lineEditBegin->setText(QApplication::translate("Widget", "00-11-280", 0));
-        lineEditEnd->setText(QApplication::translate("Widget", "00-11-780", 0));
+        lineEditBegin->setText(QApplication::translate("Widget", "50-11-280", 0));
+        lineEditEnd->setText(QApplication::translate("Widget", "50-21-780", 0));
         label->setText(QApplication::translate("Widget", "Begin:", 0));
         label_2->setText(QApplication::translate("Widget", "End:", 0));
         label_3->setText(QApplication::translate("Widget", "\345\210\206-\347\247\222-\346\257\253", 0));
         pushButtonDingWeiStart->setText(QApplication::translate("Widget", "\345\256\232\344\275\215", 0));
         pushButtonDingWeiEnd->setText(QApplication::translate("Widget", "\345\256\232\344\275\215", 0));
-        radioLR->setText(QApplication::translate("Widget", "L and R", 0));
-        radioLeft->setText(QApplication::translate("Widget", "L", 0));
-        radioRight->setText(QApplication::translate("Widget", "R", 0));
         lineEditSetGDTime->setText(QApplication::translate("Widget", "5", 0));
         pushButtonPlay->setText(QApplication::translate("Widget", "\346\232\202\345\201\234/\346\222\255\346\224\276", 0));
         pushButtonLast->setText(QApplication::translate("Widget", "\344\270\212\344\270\200\351\246\226", 0));
@@ -196,6 +216,14 @@ public:
         pushButtonSetting->setText(QApplication::translate("Widget", "\350\256\276\347\275\256", 0));
         label_5->setText(QApplication::translate("Widget", "\350\256\276\347\275\256\350\277\207\345\272\246\344\270\212\344\270\213\345\256\242\346\227\266\351\227\264\357\274\210s\357\274\211", 0));
         label_6->setText(QApplication::translate("Widget", "\350\247\206\351\242\221\344\277\235\345\255\230\350\267\257\345\276\204\346\240\271\347\233\256\345\275\225", 0));
+        label_7->setText(QApplication::translate("Widget", "\350\256\276\347\275\256\357\274\232", 0));
+        lineEditSetSavePath->setText(QApplication::translate("Widget", "1", 0));
+        radioLR->setText(QApplication::translate("Widget", "L and R", 0));
+        radioLeft->setText(QApplication::translate("Widget", "L", 0));
+        radioRight->setText(QApplication::translate("Widget", "R", 0));
+        radioS->setText(QApplication::translate("Widget", "S", 0));
+        label_8->setText(QApplication::translate("Widget", "\350\256\276\347\275\256\345\217\263\351\224\256\345\215\203\345\210\206\346\257\224", 0));
+        lineEditSetGapTime->setText(QApplication::translate("Widget", "10", 0));
     } // retranslateUi
 
 };

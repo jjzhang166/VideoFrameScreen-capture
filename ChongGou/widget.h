@@ -20,7 +20,6 @@ public:
     ~Widget();
 
     void resetQFFmpeg();
-    void keyPressEvent(QKeyEvent  *event);
     //保存上下客图片 type=0是上下客 1是过度上下客left 2是过度上下客right 3 非上下客left 4非上下客right
     void savePicture(qint64 startTime,qint64 endTime,int type);
 
@@ -36,6 +35,10 @@ public slots:
         void slotSaveVideoPicture();
         void slotSeekAndStopStart();
         void slotSeekAndStopEnd();
+
+protected:
+        void keyPressEvent(QKeyEvent *event);
+
 private:
     Ui::Widget *ui;
     QString savePathRoot;
@@ -44,6 +47,7 @@ private:
     QString saveFSXKRPath;//保存非上下课right的路径
     QString saveGDSXKLPath;//保存过度上left下课的路径
     QString saveGDSXKRPath;//保存过度上right下课的路径
+    QString saveSXKSetedPath;  //保存需要设置的上下客路径
     QFFmpeg *f;
     PlayThread *thread;
 

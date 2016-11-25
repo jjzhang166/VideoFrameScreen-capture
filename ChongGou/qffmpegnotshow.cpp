@@ -13,8 +13,6 @@ void QFFmpegNotShow::playLocal()
     totalTime = pAVFormatContext->duration;
     totalTime = totalTime*96/100;//我也不知道为什么总时间就只有这么长
 
-
-
     PictureUtils p;
     if (savePath.isEmpty())
     {

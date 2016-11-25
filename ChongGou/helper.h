@@ -189,10 +189,6 @@ public:
                return -1;
            }
            qint64 SXKTime = (qint64)minutes*60*1000000+(qint64)seconds*1000000+(qint64)milliseconds*1000;
-           qDebug() << (qint64)minutes*60*1000000 << "minutesminutesminutesminutes"
-                  << seconds << "secondssecondssecondsseconds"
-                  << milliseconds << "millisecondsmillisecondsmilliseconds"
-                  << SXKTime << "SXKTimeSXKTimeSXKTimeSXKTimeSXKTimeSXKTimeSXKTime";
            return SXKTime;
        }
 
@@ -204,15 +200,18 @@ public:
            return picName;
        }
 
-       static QString getSavePictureName(QString _path,int index ){
-            QStringList l = _path.split("\\");
+       /*
+        *  输入D:\test\1\2\L   1
+        *  输出D:\test\1\2\L\2-L
+        * */
+       static QString getSavePictureName(QString path,int index ){
+            QStringList l = path.split("\\");
             int lenth = l.length();
             QString picName = l.at(lenth-1);
             for(int k = 0; k < index ; k++){
                 picName = l.at(lenth-k-2)  +"-" + picName;
             }
-            picName = _path + "\\" + picName;
-
+            picName = path + "\\" + picName;
             qDebug()<<"picName is:"<< picName;
             return picName;
        }

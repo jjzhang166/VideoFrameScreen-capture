@@ -163,6 +163,7 @@ void QFFmpeg::playLocal()
                 avcodec_decode_video2(pAVCodecContext, pAVFrame, &frameFinished, &pAVPacket);
                 if (frameFinished){
                     //通过当前的pts进行映射得到currentTime
+
                     currentTime = av_rescale_q(pAVFrame->pkt_pts-startPts, pAVFormatContext->streams[videoStreamIndex]->time_base,av_get_time_base_q());
 
 //                    qDebug()<<"pAVFrame->pkt_pos: "  << pAVFrame->pkt_pos
@@ -171,8 +172,10 @@ void QFFmpeg::playLocal()
 //                            <<"pAVFrame->pkt_dts:" << pAVFrame->pkt_dts
 //                            <<"currentTime :" <<currentTime
 //                            <<"pAVFrame->pkt_pts;" <<  pAVFrame->pkt_pts
-//                            <<"pAVFormatContext->streams[videoStreamIndex]->time_base.num:" << pAVFormatContext->streams[videoStreamIndex]->time_base.num
-//                            <<"pAVFormatContext->streams[videoStreamIndex]->time_base.den:" << pAVFormatContext->streams[videoStreamIndex]->time_base.den;
+//                            <<"pAVFormatContext->streams[videoStreamIndex]->time_base.num:" <<
+//                              pAVCodecContext->
+//                            <<"pAVFormatContext->streams[videoStreamIndex]->time_base.den:" <<
+//                              pAVFormatContext->streams[videoStreamIndex]->first_dts;
 //                    mutex.lock();
                     sws_scale(pSwsContext,(const uint8_t* const *)pAVFrame->data,pAVFrame->linesize,0,videoHeight,pAVPicture.data,pAVPicture.linesize);
                     //发送获取一帧图像信号

@@ -50,9 +50,10 @@ Widget::~Widget()
     delete ui;
 }
 
-void Widget::slotSetImage( const QImage &image)
+void Widget::slotSetImage(const QImage &image)
 {
-    ui->labelVideo->setPixmap(QPixmap::fromImage(image));
+    ui->labelVideo->setPixmap(QPixmap::fromImage(image.scaled(ui->labelVideo->width(),ui->labelVideo->height())));
+//    ui->labelVideo->setPixmap(QPixmap::fromImage(image));
 }
 
 void Widget::slotPlayVideo()
@@ -235,7 +236,7 @@ void Widget::slotSaveVideoPicture()
     //得到截取视频的起始时间和终止时间的long值
     //将输入的时间格式转换为微秒，by zjy
 
-    if(thread->getFFmpeg()->getState() != QFFmpeg::PlayingState){
+    if(!thread->isRunning()){
         QMessageBox::about(this,"","只能保存当前正在播放的视频，当前无视频播放不保存图片");
         return;
     }
@@ -394,17 +395,34 @@ void Widget::setVideoAlreadySave()
     QString startTime = ui->lineEditBegin->text();
     QString endTime = ui->lineEditEnd->text();
 
+    QString fileName;
+
     if(ui->radioLR->isChecked()){
-         whichSide = "Left and Right ";
+         whichSide = "Left and Right,";
+         fileName = savePathRoot + "视频信息.txt";
     }else if(ui->radioLeft->isChecked()){
-         whichSide = "Left           ";
-    }else{
-         whichSide = "Right          ";
+         whichSide = "Left          ,";
+         fileName = savePathRoot + "视频信息.txt";
+    }else if(ui->radioRight->isChecked()){
+         whichSide = "Right         ,";
+         fileName = savePathRoot + "视频信息.txt";
+    }else if(ui->radioS->isChecked()){
+         whichSide = "Mode S,both LR,";
+         QString savePicPath = Helper::getSavePictureName(savePathRoot,ui->lineEditSetSavePath->text().toInt());
+         QStringList txtNameList = savePicPath.split('\\');
+         QString txtName = txtNameList.at(txtNameList.length()-1);
+         //假设拿到的是违法-1- 取出最后的那个- 得到违法-1
+         txtName = txtName.mid(0,txtName.length()-1);
+         fileName = savePathRoot + txtName + ".txt";
     }
 
-    QString newName = startTime + "到" + endTime + "  " + whichSide + oldName + "\n";
+    QString newName = startTime + "," + endTime + "," + whichSide + oldName + "\n";
+    qDebug() << newName << "newNamenewNamenewNamenewNamenewNamenewNamenewNamenewNamenewNamenewNamenewNamenewName";
 
-    QString fileName = savePathRoot + "视频信息.txt";
+    QDir tempQ;
+    tempQ.mkpath(savePathRoot);
+
+    qDebug() << fileName << "fileNamefileNamefileNamefileNamefileNamefileNamefileNamefileNamefileNamefileName";
     QFile file(fileName);
     if(!file.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     {
